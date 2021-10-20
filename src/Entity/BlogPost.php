@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Dto\BlogPostInputPost;
 use App\Repository\BlogPostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,7 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
  */
 #[ApiResource(
-    collectionOperations: ['get', 'post'],
+    collectionOperations: [
+        'get',
+        'post' => [
+            'input' => BlogPostInputPost::class,
+        ]
+    ],
     itemOperations: ['get', 'patch', 'delete'],
 )]
 class BlogPost
