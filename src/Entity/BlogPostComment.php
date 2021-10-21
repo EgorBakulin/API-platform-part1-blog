@@ -5,13 +5,24 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Dto\BlogPostCommentInputPost;
+use App\Dto\BlogPostCommentOutput;
 use App\Repository\BlogPostCommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=BlogPostCommentRepository::class)
  */
-#[ApiResource]
+#[ApiResource(
+    collectionOperations:[
+        'post' => [
+            'input' => BlogPostCommentInputPost::class,
+            'output' => false,
+        ]
+    ],
+    itemOperations: [],
+    output: BlogPostCommentOutput::class
+)]
 class BlogPostComment
 {
     /**
