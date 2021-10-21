@@ -74,6 +74,11 @@ class BlogPost
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $viewsCount;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -158,6 +163,18 @@ class BlogPost
                 $comment->setBlogPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getViewsCount(): ?int
+    {
+        return $this->viewsCount;
+    }
+
+    public function setViewsCount(int $viewsCount): self
+    {
+        $this->viewsCount = $viewsCount;
 
         return $this;
     }
