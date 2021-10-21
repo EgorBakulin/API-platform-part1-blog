@@ -9,6 +9,8 @@ use App\Dto\BlogPostInputPatch;
 use App\Dto\BlogPostInputPost;
 use App\Dto\BlogPostOutputCollection;
 use App\Repository\BlogPostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -64,6 +66,16 @@ class BlogPost
      */
     private $onReview;
 
+    /**
+     * @ORM\OneToMany(targetEntity=BlogPostComment::class, mappedBy="blogPost", orphanRemoval=true)
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,6 +125,36 @@ class BlogPost
     public function setOnReview(bool $onReview): self
     {
         $this->onReview = $onReview;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BlogPostComment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(BlogPostComment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setBlogPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(BlogPostComment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getBlogPost() === $this) {
+                $comment->setBlogPost(null);
+            }
+        }
 
         return $this;
     }
