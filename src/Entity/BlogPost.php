@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\GetBlogPostController;
 use App\Dto\BlogPostInputPatch;
 use App\Dto\BlogPostInputPost;
 use App\Dto\BlogPostOutputCollection;
@@ -30,6 +31,7 @@ use Doctrine\ORM\Mapping as ORM;
     itemOperations: [
         'get' => [
             'output' => BlogPostOutputItem::class,
+            'controller' => GetBlogPostController::class,
         ],
         'patch' => [
             'input' => BlogPostInputPatch::class,
