@@ -28,6 +28,7 @@ class BlogPostOutputCollectionDataTransformer implements DataTransformerInterfac
             $blogPostContentFirstWords
         );
         $blogPostOutput->createdAt = $object->getCreatedAt();
+        $blogPostOutput->viewsCount = $object->getViewsCount();
 
         return $blogPostOutput;
     }

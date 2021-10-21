@@ -17,6 +17,7 @@ class BlogPostOutputItemDataTransformer implements DataTransformerInterface
         $blogPostOutputCollection->title = $object->getTitle();
         $blogPostOutputCollection->content = $object->getContent();
         $blogPostOutputCollection->comments = $object->getComments()->toArray();
+        $blogPostOutputCollection->viewsCount = $object->getViewsCount();
         
         return $blogPostOutputCollection;
     }

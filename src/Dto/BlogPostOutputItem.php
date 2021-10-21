@@ -10,5 +10,7 @@ class BlogPostOutputItem
 
     public string $content;
 
+    public int $viewsCount;
+
     public array $comments;
 }

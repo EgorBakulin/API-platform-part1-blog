@@ -13,4 +13,6 @@ class BlogPostOutputCollection
     public string $content;
 
     public DateTime $createdAt;
+
+    public int $viewsCount;
 }

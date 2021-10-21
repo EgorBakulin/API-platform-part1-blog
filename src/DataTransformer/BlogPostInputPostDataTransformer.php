@@ -20,7 +20,8 @@ class BlogPostInputPostDataTransformer implements DataTransformerInterface
             ->setCreatedAt(new DateTime())
             ->setTitle($object->title)
             ->setContent($object->content)
-            ->setOnReview(true);
+            ->setOnReview(true)
+            ->setViewsCount(0);
     
         return $blogPost;
     }
