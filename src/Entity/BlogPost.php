@@ -8,6 +8,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Dto\BlogPostInputPatch;
 use App\Dto\BlogPostInputPost;
 use App\Dto\BlogPostOutputCollection;
+use App\Dto\BlogPostOutputItem;
 use App\Repository\BlogPostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -27,7 +28,9 @@ use Doctrine\ORM\Mapping as ORM;
         ]
     ],
     itemOperations: [
-        'get',
+        'get' => [
+            'output' => BlogPostOutputItem::class,
+        ],
         'patch' => [
             'input' => BlogPostInputPatch::class,
             'output' => false,
