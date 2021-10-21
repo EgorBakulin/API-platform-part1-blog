@@ -7,6 +7,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Dto\BlogPostInputPatch;
 use App\Dto\BlogPostInputPost;
+use App\Dto\BlogPostOutputCollection;
 use App\Repository\BlogPostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,14 +19,18 @@ use Doctrine\ORM\Mapping as ORM;
         'get',
         'post' => [
             'input' => BlogPostInputPost::class,
+            'output' => false,
         ]
     ],
     itemOperations: [
         'get',
         'patch' => [
             'input' => BlogPostInputPatch::class,
+            'output' => false,
         ], 
-        'delete'
+        'delete' => [
+            'output' => false,
+        ]
     ],
 )]
 class BlogPost
