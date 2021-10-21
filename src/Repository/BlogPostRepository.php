@@ -20,8 +20,6 @@ class BlogPostRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, BlogPost::class);
     }
-<<<<<<< HEAD
-=======
 
     public function incrementViewsCount(BlogPost $blogPost): BlogPost
     {
@@ -35,5 +33,4 @@ class BlogPostRepository extends ServiceEntityRepository
         return $blogPost;
     }
 
->>>>>>> 16bc2a8 (CUSTOM CONTROLLER: added increment method to repository)
 }
