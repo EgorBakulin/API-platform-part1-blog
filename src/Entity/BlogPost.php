@@ -22,8 +22,15 @@ use Symfony\Component\HttpFoundation\Request;
  */
 #[ApiResource(
     collectionOperations: [
-        'get' => [
-            'output' => BlogPostOutputCollection::class,
+        'get_not_reviewed' => [
+            'method' => Request::METHOD_GET,
+            'path' => 'blog_posts/not_reviewed',
+            'output' => BlogPostOutputCollection::class 
+        ],
+        'get_reviewed' => [
+            'method' => Request::METHOD_GET,
+            'path' => 'blog_posts',
+            'output' => BlogPostOutputCollection::class 
         ],
         'post' => [
             'input' => BlogPostInputPost::class,
