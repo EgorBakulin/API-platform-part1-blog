@@ -16,7 +16,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 #[ApiResource(
     collectionOperations: [
-        'get',
+        'get' => [
+            'output' => BlogPostOutputCollection::class,
+        ],
         'post' => [
             'input' => BlogPostInputPost::class,
             'output' => false,
