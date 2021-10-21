@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\GetBlogPostController;
+use App\Controller\RewiewBlogPostController;
 use App\Dto\BlogPostInputPatch;
 use App\Dto\BlogPostInputPost;
 use App\Dto\BlogPostOutputCollection;
@@ -14,6 +15,7 @@ use App\Repository\BlogPostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
@@ -35,6 +37,13 @@ use Doctrine\ORM\Mapping as ORM;
         ],
         'patch' => [
             'input' => BlogPostInputPatch::class,
+            'output' => false,
+        ], 
+        'review' => [
+            'method' => Request::METHOD_PATCH,
+            'path' => 'blog_posts/{id}/review',
+            'controller' => RewiewBlogPostController::class,
+            'input' => false,
             'output' => false,
         ], 
         'delete' => [

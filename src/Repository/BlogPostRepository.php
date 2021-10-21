@@ -33,4 +33,17 @@ class BlogPostRepository extends ServiceEntityRepository
         return $blogPost;
     }
 
+    public function review(BlogPost $blogPost): BlogPost
+    {
+        $entityManager = $this->getEntityManager();
+
+        $blogPost->setOnReview(false);
+
+        $entityManager->persist($blogPost);
+        $entityManager->flush();
+
+        return $blogPost;
+    }
+
+
 }
